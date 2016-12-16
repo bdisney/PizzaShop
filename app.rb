@@ -22,7 +22,20 @@ get '/about' do
 	erb :about
 end
 
-post '/cart' do
-	erb 'Hello'
+get '/cart' do
+	erb :cart
 end
+
+post '/cart' do
+	@pre_order = params[:orders].split(',')
+	@products = Product.all
+
+	erb :cart
+end
+
+post '/order' do
+	erb 'Type you name and addres'
+
+end
+
 

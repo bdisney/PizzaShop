@@ -1,5 +1,40 @@
 <h2>List of products in your cart:</h2>
 
-<%= @items.inspect %>
+<table class="table table-striped"> 
+<thead>
+    <tr>
+        <th>Picture</th>
+        <th>Pizza</th>
+        <th>Price</th>
+        <th>Qty</th>
+        <th>Sum</th>
+</thead>
+<% @total = 0 %>
+<tbody>
+    <% @items.each do |item|%>
+    <% qty = item[1] %>
+    <% sum = item[0].price.to_i * qty.to_i %>
+    <tr>
+        <td><img src="<%= item[0].path_to_image %>"> </td>
+        <td><%= item[0].title %></td>      
+        <td><%= item[0].price %> rub.</td></td>
+        <td><%= qty %></td>
+        <td><%= sum %> rub.</td>
+        <% @total += sum %>
+    </tr>
+<% end %>
+    <tr>
+        <td></td><td></td><td></td>
+        <td><b>Total price:</b></td>
+        <td><%= @total %> rub.</td>
+    </tr>
+</tbody>
+</table>
 
-
+<div class="row">
+    <div class="col-md-9"></div>
+        <div class="col-md-3" >
+            <a class="btn btn-info button-right" href="/" role="button">Continue</a>
+            <input class="btn btn-success" href="/order" type="button" value="Checkout">
+        </div>
+</div>

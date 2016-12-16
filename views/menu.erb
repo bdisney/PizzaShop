@@ -1,0 +1,74 @@
+<h3>Welcome to PizzaShop!</h3>
+
+<div class="row">
+	<% @products.each do |p| %>
+		<div class="col-md-3">
+			<div>
+				<%= p.title %>
+			</div>
+			<div>
+				<img src=" <%= p.path_to_image %>" />
+			</div>
+			<div>
+				<%= p.description %>
+			</div>
+			<div>
+				Size: <%= p.size %> cm.
+			</div>
+
+			<div>
+				Price: <%= p.price %> rub.
+			</div>
+
+			<div>
+				<button class="btn btn-success btn-xs" onclick="add_to_cart(<%= p.id %>)" >Buy me!</button>
+			</div>
+
+			
+
+		</div>
+
+	<% end %>
+</div>
+<br />
+<br />
+
+<button class="btn btn-success btn-xs" onclick="something()" >Click me!</button>
+
+
+
+<div class="container marketing">
+
+      <!-- Three columns of text below the carousel -->
+      <div class="row">
+        <br />
+        <br />  
+        <br />
+        <div class="col-lg-4">
+          <img class="img-circle" data-src="images/margarita.png" alt="140x140" style="width: 140px; height: 140px;" src="images/margarita.png">
+          <h2>Маргарита</h2>
+          <p>Больше вкуса и еще больше свежести в классический рецепт — это маргарита от Pizza Shop! Попробуй спелый томат и двойной слой моцареллы на нашем фирменном тесте! </p>
+          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" data-src="images/pepperoni.png" alt="140x140" style="width: 140px; height: 140px;" src="images/pepperoni.png">
+          <h2>Пепперони</h2>
+          <p>Duis mollis, est non commodo luctus, nisi erat porttitor 
+ligula, eget lacinia odio sem nec elit. Cras mattis consectetur purus 
+sit amet fermentum. Fusce dapibus, tellus ac cursus commodo, tortor 
+mauris condimentum nibh.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+        </div><!-- /.col-lg-4 -->
+        <div class="col-lg-4">
+          <img class="img-circle" data-src="images/hawaii.png" alt="140x140" style="width: 140px; height: 140px;" src="images/hawaii.png">
+          <h2>Гавайская</h2>
+          <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis 
+in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. 
+Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh,
+ ut fermentum massa justo sit amet risus.</p>
+          <p><a class="btn btn-default" href="#" role="button">View details »</a></p>
+        </div><!-- /.col-lg-4 -->
+      </div><!-- /.row -->
+
+
+      <!-- START THE FEATURETTES -->

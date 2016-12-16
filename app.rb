@@ -34,7 +34,7 @@ post '/cart' do
 end
 
 post '/order' do
-	erb 'Type you name and addres'
+	return  erb :order
 
 end
 

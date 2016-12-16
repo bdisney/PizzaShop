@@ -31,7 +31,7 @@ post '/cart' do
 	@orders = parse_orders_input orders_input
 	@products = Product.all
 
-	erb " HEllo #{@orders.inspect}"
+	erb :cart
 end
 
 orders_line = "product_1=1,product_2=1,product_3=2"

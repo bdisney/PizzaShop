@@ -81,9 +81,11 @@ post '/order' do
 		@error = @new_order.errors.full_messages.first
 		
 	end
+end
 
-	
-
+get '/admin' do
+	@orders = Order.all.order ('created_at')
+	erb :admin
 end
 
 

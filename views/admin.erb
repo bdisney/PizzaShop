@@ -1,0 +1,27 @@
+<h2>List of all orders:</h2>
+<br />
+<br />
+<table class="table table-striped"> 
+<thead>
+    <tr>
+        <th>Created_at</th>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Address</th>
+        <th>Products</th>
+</thead>
+
+<tbody>
+    <% @orders.each do |order| %>
+        <tr>
+	        <td><%= order.created_at %></td>
+	        <td><%= order.name %></td>      
+	        <td><%= order.phone %></td></td>
+	        <td><%= order.address %></td>
+	        <td><%= order.orders_input %></td>
+        </tr>
+<% end %>
+    
+</tbody>
+</table>
+

@@ -67,8 +67,22 @@ def parse_orders_input orders_input
 
 end
 
+get '/order' do
+	erb :order
+end
+
 post '/order' do
-	return  erb :order
+
+	@new_order = Order.new params[:order]
+	if @new_order.save
+		erb 'Спасибо, Ваш заказ принят!'
+
+	else
+		@error = @new_order.errors.full_messages.first
+		
+	end
+
+	
 
 end
 

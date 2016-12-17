@@ -7,6 +7,7 @@ class CreateAddOrders < ActiveRecord::Migration[5.0]
   		t.text :orders_input
   	
   		t.timestamps
+  	end
   end
 end
  

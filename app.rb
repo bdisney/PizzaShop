@@ -13,8 +13,6 @@ end
 class Order < ActiveRecord::Base
 end
 
-
-
 get '/' do
 	@products = Product.all
 
@@ -33,6 +31,14 @@ post '/cart' do
 	@orders_input = params[:orders_input]
 	@items = parse_orders_input @orders_input
 	@products = Product.all
+
+	# выводим сообщение о том, что корзина пуста
+
+	if @items.length == 0
+		return erb :cart_is_empty
+	end
+
+	# выводим список продуктов в корзине
 
 	@items.each do |item|
 		# id, cnt

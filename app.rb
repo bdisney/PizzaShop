@@ -74,13 +74,15 @@ end
 post '/order' do
 
 	@new_order = Order.new params[:order]
+
 	if @new_order.save
-		erb 'Спасибо, Ваш заказ принят!'
+		erb 'Thank you! Your order has been placed.'
 
 	else
 		@error = @new_order.errors.full_messages.first
-		
 	end
+
+	erb :order
 end
 
 get '/admin' do

@@ -1,67 +1,65 @@
 <h2>List of products in your cart:</h2>
 
-<table class="table table-striped"> 
-<thead>
-    <tr>
-        <th>Picture</th>
-        <th>Pizza</th>
-        <th>Price</th>
-        <th>Qty</th>
-        <th>Sum</th>
-</thead>
-<% @total_price = 0 %>
-<tbody>
-    <% @items.each do |item|%>
-    <% qty = item[1] %>
-    <% sum = item[0].price.to_i * qty.to_i %>
-    <tr>
-        <td><img src="<%= item[0].path_to_image %>"> </td>
-        <td><%= item[0].title %></td>      
-        <td><%= item[0].price %> rub.</td></td>
-        <td><%= qty %></td>
-        <td><%= sum %> rub.</td>
-        <% @total_price += sum %>
-    </tr>
-<% end %>
-    <tr>
-        <td></td><td></td><td></td>
-        <td><b>Total price:</b></td>
-        <td><%= @total_price %> rub.</td>
-    </tr>
-</tbody>
-</table>
+<div id="cart">
+    <table class="table table-striped"> 
+    <thead>
+        <tr>
+            <th>Picture</th>
+            <th>Pizza</th>
+            <th>Price</th>
+            <th>Qty</th>
+            <th>Sum</th>
+    </thead>
+    <% @total_price = 0 %>
+    <tbody>
+        <% @items.each do |item|%>
+        <% qty = item[1] %>
+        <% sum = item[0].price.to_i * qty.to_i %>
+        <tr>
+            <td><img src="<%= item[0].path_to_image %>"> </td>
+            <td><%= item[0].title %></td>      
+            <td><%= item[0].price %> rub.</td></td>
+            <td><%= qty %></td>
+            <td><%= sum %> rub.</td>
+            <% @total_price += sum %>
+        </tr>
+    <% end %>
+        <tr>
+            <td></td><td></td><td></td>
+            <td><b>Total price:</b></td>
+            <td><%= @total_price %> rub.</td>
+        </tr>
+    </tbody>
+    </table>
 
-<div class="row">
-    <div class="col-md-10"></div>
-        <div class="col-md-2" >
-            <a class="btn btn-info button-right" href="/" role="button">Add pizza's to cart</a>       
-        </div>
+    <div class="row">
+        <div class="col-md-10"></div>
+            <div class="col-md-2" >
+                <a class="btn btn-info button-right" href="/" role="button">Add pizza's to cart</a>       
+            </div>
+    </div>
+
+    <form action="/order" method="POST" role="form">
+      <input name="order[orders_input]" type="hidden" value="<%= @orders_input %>" />
+      <div class="form-group">
+        <label>Name: </label>
+        <input name="order[name]" type="text" class="form-control" placeholder="Your name"  >
+      </div>
+
+      <div class="form-group">
+        <label>Phone: </label>
+        <input name="order[phone]" type="text" class="form-control" placeholder="Your phone"  >
+      </div>
+
+      <div class="form-group">
+        <label>Address:</label>
+        <input name="order[address]" type="text" class="form-control" placeholder="Delivery address"  >
+      </div>
+
+        <input class="btn btn-success" href="/order" type="submit" value="Confirm & Checkout">
+        <button type="button" class="btn btn-danger" onclick="cancel_order()">Cancel</button>
+
+    </form>
 </div>
-
-<form action="/order" method="POST" role="form">
-  <input name="order[orders_input]" type="hidden" value="<%= @orders_input %>" />
-  <div class="form-group">
-    <label>Name: </label>
-    <input name="order[name]" type="text" class="form-control" placeholder="Your name"  >
-  </div>
-
-  <div class="form-group">
-    <label>Phone: </label>
-    <input name="order[phone]" type="text" class="form-control" placeholder="Your phone"  >
-  </div>
-
-  <div class="form-group">
-    <label>Address:</label>
-    <input name="order[address]" type="text" class="form-control" placeholder="Delivery address"  >
-  </div>
-
-    
- 
-    <input class="btn btn-success" href="/order" type="submit" value="Confirm & Checkout">
-    <button type="button" class="btn btn-danger" onclick="cancel_order()">Cancel</button>
-    
-
-
-</form>
 
 
